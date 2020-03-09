@@ -14,8 +14,16 @@ class CreateWagersTable extends Migration
     public function up()
     {
         Schema::create('wagers', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->increments('id');
+            $table->integer('total_wager_value');
+            $table->float('odds');
+            $table->integer('selling_percentage');
+            $table->float('selling_price');
+
+            $table->float('current_selling_price');
+            $table->integer('percentage_sold');
+            $table->integer('amount_sold');
+            $table->timestamp('placed_at');
         });
     }
 

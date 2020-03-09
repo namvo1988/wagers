@@ -13,6 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+use App\Wagers;
+
+Route::get('wagers', 'WagersController@index');
+Route::get('wagers/{wagers}', 'WagersController@show');
+Route::post('wagers', 'WagersController@store');
+
+Route::post('buy/{wagers}', 'CartController@buyWagers');
+
+//Route::fallback(function(){
+//    return response()->json([
+//        'message' => 'Page Not Found. If error persists, contact info@website.com'], 404);
+//});
